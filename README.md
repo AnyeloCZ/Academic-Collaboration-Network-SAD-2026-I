@@ -117,11 +117,6 @@ This workshop focuses on translating analytical findings from Workshop #1 into a
 - **Deployment:** Kubernetes with horizontal auto-scaling
 - **Security:** OAuth 2.0 + JWT, TLS 1.3, GDPR compliance
 
-## Deliverables
-- [System Design Document (PDF)](Workshop_2_Design/System_Design_Document.pdf)
-- [Architecture Diagrams](Workshop_2_Design/diagrams/)
-- [Source Files](Workshop_2_Design/diagrams/source_files/)
-
 ## Diagrams Included
 1. Microservices Architecture Overview
 2. Skill Matching Engine Processing Flow
