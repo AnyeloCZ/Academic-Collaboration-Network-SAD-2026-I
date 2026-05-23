@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workshop 4 Simulation Dashboard</title>
+  <style>
+    :root {
+      --ink: #1f2328;
+      --muted: #59636e;
+      --line: #d0d7de;
+      --panel: #ffffff;
+      --soft: #f6f8fa;
+      --blue: #2a6f97;
+      --green: #2d8a5f;
+      --orange: #c76b24;
+      --red: #be4848;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Segoe UI, sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      padding: 28px 32px 22px;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 24px 48px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 30px 0 14px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p { color: var(--muted); line-height: 1.5; }
+    a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      padding: 10px 14px;
+      color: var(--ink);
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .chart {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .chart img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eaf3f8;
+      color: var(--ink);
+    }
+    tr:last-child td { border-bottom: 0; }
+    .note {
+      background: #fff8e6;
+      border: 1px solid #f0d38a;
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #5f4711;
+    }
+    @media (max-width: 850px) {
+      .metrics, .grid { grid-template-columns: 1fr; }
+      header { padding: 22px 18px; }
+      main { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Workshop 4 Simulation Dashboard</h1>
+    <p>Academic Collaboration Network - system simulation, validation and visual results.</p>
+    <div class="actions">
+      <a class="button" href="System_Simulation_Report.pdf">Open PDF Report</a>
+      <a class="button" href="../results/process_summary.csv">Process CSV</a>
+      <a class="button" href="../results/behavior_summary.csv">Behavior CSV</a>
+    </div>
+  </header>
+  <main>
+    <section class="metrics">
+      <div class="metric"><strong>91.1%</strong><span>Group formation time reduction</span></div>
+      <div class="metric"><strong>1.25s</strong><span>p95 latency at 500 students</span></div>
+      <div class="metric"><strong>0.87</strong><span>Optimized satisfaction score</span></div>
+      <div class="metric"><strong>3</strong><span>Isolated students after B1 loop</span></div>
+    </section>
+
+    <h2>Visual Results</h2>
+    <section class="grid">
+      <div class="chart"><img src="../figures/process_time_and_isolation.png" alt="Process time and isolation chart"></div>
+      <div class="chart"><img src="../figures/quality_and_satisfaction.png" alt="Quality and satisfaction chart"></div>
+      <div class="chart"><img src="../figures/network_density_over_time.png" alt="Network density over time chart"></div>
+      <div class="chart"><img src="../figures/isolation_and_fairness.png" alt="Isolation and fairness chart"></div>
+      <div class="chart"><img src="../figures/sensitivity_isolation_heatmap.png" alt="Sensitivity heatmap"></div>
+    </section>
+
+    <h2>Process Simulation Summary</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario</th>
+      <th>cohort_size</th>
+      <th>success_rate_mean</th>
+      <th>success_rate_std</th>
+      <th>median_formation_days</th>
+      <th>p95_matching_latency_seconds</th>
+      <th>isolated_students_mean</th>
+      <th>isolated_students_std</th>
+      <th>group_balance_index_mean</th>
+      <th>mean_schedule_score</th>
+      <th>satisfaction_score_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AS_IS_WhatsApp</td>
+      <td>200.000</td>
+      <td>0.391</td>
+      <td>0.073</td>
+      <td>4.515</td>
+      <td>N/A</td>
+      <td>121.875</td>
+      <td>14.611</td>
+      <td>0.300</td>
+      <td>0.838</td>
+      <td>0.377</td>
+    </tr>
+    <tr>
+      <td>ACN_Baseline</td>
+      <td>200.000</td>
+      <td>0.897</td>
+      <td>0.057</td>
+      <td>0.392</td>
+      <td>0.272</td>
+      <td>72.792</td>
+      <td>9.954</td>
+      <td>0.658</td>
+      <td>0.706</td>
+      <td>0.835</td>
+    </tr>
+    <tr>
+      <td>ACN_Optimized_B1</td>
+      <td>200.000</td>
+      <td>0.981</td>
+      <td>0.024</td>
+      <td>0.402</td>
+      <td>0.210</td>
+      <td>43.667</td>
+      <td>7.122</td>
+      <td>0.661</td>
+      <td>0.707</td>
+      <td>0.867</td>
+    </tr>
+    <tr>
+      <td>ACN_LMS_Outage_Fallback</td>
+      <td>200.000</td>
+      <td>0.718</td>
+      <td>0.084</td>
+      <td>0.535</td>
+      <td>0.309</td>
+      <td>98.583</td>
+      <td>12.488</td>
+      <td>0.658</td>
+      <td>0.705</td>
+      <td>0.742</td>
+    </tr>
+    <tr>
+      <td>ACN_Exam_Peak_500</td>
+      <td>500.000</td>
+      <td>0.931</td>
+      <td>0.028</td>
+      <td>0.382</td>
+      <td>1.249</td>
+      <td>141.625</td>
+      <td>12.721</td>
+      <td>0.658</td>
+      <td>0.707</td>
+      <td>0.846</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>Behavior Simulation Summary</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario</th>
+      <th>adoption_rate</th>
+      <th>density</th>
+      <th>isolated_students</th>
+      <th>degree_gini</th>
+      <th>giant_component_share</th>
+      <th>mean_satisfaction</th>
+      <th>group_balance_index</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AS_IS_Self_Selection</td>
+      <td>0.000</td>
+      <td>0.011</td>
+      <td>34.000</td>
+      <td>0.442</td>
+      <td>0.800</td>
+      <td>0.468</td>
+      <td>0.216</td>
+    </tr>
+    <tr>
+      <td>ACN_No_B1</td>
+      <td>0.430</td>
+      <td>0.022</td>
+      <td>19.000</td>
+      <td>0.467</td>
+      <td>0.880</td>
+      <td>0.615</td>
+      <td>0.729</td>
+    </tr>
+    <tr>
+      <td>ACN_With_B1</td>
+      <td>0.855</td>
+      <td>0.112</td>
+      <td>3.000</td>
+      <td>0.196</td>
+      <td>0.985</td>
+      <td>0.772</td>
+      <td>0.668</td>
+    </tr>
+    <tr>
+      <td>ACN_Low_Adoption_20</td>
+      <td>0.375</td>
+      <td>0.027</td>
+      <td>12.000</td>
+      <td>0.505</td>
+      <td>0.930</td>
+      <td>0.619</td>
+      <td>0.616</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>How to Regenerate</h2>
+    <div class="note">Run <strong>run_workshop4.bat</strong> from the project folder. It regenerates this dashboard, the PDF report, figures and CSV results.</div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,147 @@
+{
+  "random_seed": 202604,
+  "cohort_size": 200,
+  "group_size": 5,
+  "monte_carlo_trials": 120,
+  "semester_weeks": 12,
+  "survey_calibration": {
+    "survey_n": 25,
+    "whatsapp_only_rate": 0.88,
+    "communication_barrier_rate": 0.36,
+    "lack_of_interest_rate": 0.32,
+    "platform_interest_yes_or_maybe": 0.96,
+    "adoption_likelihood_mean": 3.88,
+    "adoption_likelihood_std": 1.01,
+    "observed_as_is_group_formation_days_min": 2.0,
+    "observed_as_is_group_formation_days_mode": 3.5,
+    "observed_as_is_group_formation_days_max": 5.0
+  },
+  "process_scenarios": [
+    {
+      "name": "AS_IS_WhatsApp",
+      "description": "Current informal workflow using WhatsApp or personal contacts, calibrated from Workshop 1.",
+      "cohort_size": 200,
+      "strategy": "homophily",
+      "platform_enabled": false,
+      "adoption_rate": 0.0,
+      "success_base": 0.58,
+      "invitation_acceptance": 0.62,
+      "communication_efficiency": 0.42,
+      "schedule_integration": 0.25,
+      "isolation_priority": false,
+      "lms_available": false,
+      "stress_multiplier": 1.0
+    },
+    {
+      "name": "ACN_Baseline",
+      "description": "Designed platform from Workshop 2 with profile service, matching engine, workspace and notifications.",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform_enabled": true,
+      "adoption_rate": 0.80,
+      "success_base": 0.84,
+      "invitation_acceptance": 0.82,
+      "communication_efficiency": 0.78,
+      "schedule_integration": 0.72,
+      "isolation_priority": true,
+      "lms_available": true,
+      "stress_multiplier": 1.0
+    },
+    {
+      "name": "ACN_Optimized_B1",
+      "description": "Workshop 3 robust design: cached matching, isolation-priority balancing loop and faculty ambassador adoption support.",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform_enabled": true,
+      "adoption_rate": 0.90,
+      "success_base": 0.90,
+      "invitation_acceptance": 0.88,
+      "communication_efficiency": 0.86,
+      "schedule_integration": 0.82,
+      "isolation_priority": true,
+      "lms_available": true,
+      "stress_multiplier": 0.78
+    },
+    {
+      "name": "ACN_LMS_Outage_Fallback",
+      "description": "Failure scenario from Workshop 3 risk register: LMS API unavailable and fallback to cached/manual course data.",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform_enabled": true,
+      "adoption_rate": 0.80,
+      "success_base": 0.76,
+      "invitation_acceptance": 0.76,
+      "communication_efficiency": 0.70,
+      "schedule_integration": 0.48,
+      "isolation_priority": true,
+      "lms_available": false,
+      "stress_multiplier": 1.18
+    },
+    {
+      "name": "ACN_Exam_Peak_500",
+      "description": "Stress condition with 500 concurrent students during exam period, aligned with Workshop 2 and 3 capacity targets.",
+      "cohort_size": 500,
+      "strategy": "balanced",
+      "platform_enabled": true,
+      "adoption_rate": 0.86,
+      "success_base": 0.86,
+      "invitation_acceptance": 0.84,
+      "communication_efficiency": 0.80,
+      "schedule_integration": 0.76,
+      "isolation_priority": true,
+      "lms_available": true,
+      "stress_multiplier": 1.24
+    }
+  ],
+  "behavior_scenarios": [
+    {
+      "name": "AS_IS_Self_Selection",
+      "description": "Informal self-selection network with homophily and no institutional matching.",
+      "strategy": "homophily",
+      "initial_adoption": 0.0,
+      "weekly_participation": 0.48,
+      "edge_retention": 0.42,
+      "isolation_priority": false,
+      "platform_enabled": false,
+      "max_adoption": 0.0
+    },
+    {
+      "name": "ACN_No_B1",
+      "description": "Platform matching without the balancing loop that prioritizes isolated students.",
+      "strategy": "balanced",
+      "initial_adoption": 0.35,
+      "weekly_participation": 0.45,
+      "edge_retention": 0.40,
+      "isolation_priority": false,
+      "platform_enabled": true,
+      "max_adoption": 0.55
+    },
+    {
+      "name": "ACN_With_B1",
+      "description": "Platform matching with centrality monitoring and isolation-priority re-inclusion.",
+      "strategy": "balanced",
+      "initial_adoption": 0.78,
+      "weekly_participation": 0.86,
+      "edge_retention": 0.78,
+      "isolation_priority": true,
+      "platform_enabled": true,
+      "max_adoption": 0.96
+    },
+    {
+      "name": "ACN_Low_Adoption_20",
+      "description": "Risk scenario where adoption remains low despite system availability.",
+      "strategy": "balanced",
+      "initial_adoption": 0.20,
+      "weekly_participation": 0.48,
+      "edge_retention": 0.54,
+      "isolation_priority": true,
+      "platform_enabled": true,
+      "max_adoption": 0.38
+    }
+  ],
+  "sensitivity": {
+    "adoption_rates": [0.2, 0.4, 0.6, 0.8, 0.9],
+    "isolation_thresholds": [0, 1, 2, 3],
+    "weeks": 12
+  }
+}

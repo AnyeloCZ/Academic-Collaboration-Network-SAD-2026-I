@@ -1,0 +1,5 @@
+design_claim,threshold,observed,status
+Matching engine responds under 3 seconds,3.0,1.2494935017058462,validated
+Platform reduces average group formation time,4.515393710271191,0.4022244429761451,validated
+Isolation-priority loop reduces isolated students,34.0,3.0,validated
+User satisfaction reaches the 80 percent target,0.8,0.8674430508833588,validated
