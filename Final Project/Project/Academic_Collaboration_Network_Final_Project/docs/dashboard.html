@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ACN Simulation Dashboard</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #f6f8fa; color: #1f2328; }
+header { padding: 28px 36px; background: white; border-bottom: 1px solid #d0d7de; }
+main { max-width: 1180px; margin: auto; padding: 24px; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.metric, .chart { background: white; border: 1px solid #d0d7de; border-radius: 8px; padding: 14px; }
+.metric strong { display: block; font-size: 28px; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 22px; }
+img { width: 100%; height: auto; }
+table { border-collapse: collapse; width: 100%; background: white; margin-top: 18px; }
+th, td { border: 1px solid #d0d7de; padding: 7px; font-size: 13px; }
+th { background: #eaf3f8; }
+@media(max-width: 900px) { .metrics, .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+<h1>Academic Collaboration Network Dashboard</h1>
+<p>Simulation and validation results for the final project.</p>
+<p><a href="System_Simulation_Report.pdf">Open PDF report</a></p>
+</header>
+<main>
+<section class="metrics">
+<div class="metric"><strong>90.5%</strong><span>formation time reduction</span></div>
+<div class="metric"><strong>1.26s</strong><span>p95 latency at 500 students</span></div>
+<div class="metric"><strong>0.88</strong><span>optimized satisfaction</span></div>
+<div class="metric"><strong>5</strong><span>isolated students with B1</span></div>
+</section>
+<section class="grid">
+<div class="chart"><img src="../figures/process_time_and_isolation.png"></div>
+<div class="chart"><img src="../figures/quality_and_satisfaction.png"></div>
+<div class="chart"><img src="../figures/network_density_over_time.png"></div>
+<div class="chart"><img src="../figures/sensitivity_isolation_heatmap.png"></div>
+</section>
+<h2>Process Summary</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario</th>
+      <th>cohort_size</th>
+      <th>success_rate_mean</th>
+      <th>median_formation_days</th>
+      <th>p95_matching_latency_seconds</th>
+      <th>isolated_students_mean</th>
+      <th>group_balance_index_mean</th>
+      <th>satisfaction_score_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AS_IS_WhatsApp</td>
+      <td>200.0</td>
+      <td>0.471458</td>
+      <td>4.730946</td>
+      <td>NaN</td>
+      <td>105.708333</td>
+      <td>0.352469</td>
+      <td>0.458512</td>
+    </tr>
+    <tr>
+      <td>ACN_Baseline</td>
+      <td>200.0</td>
+      <td>0.961040</td>
+      <td>0.440188</td>
+      <td>0.264747</td>
+      <td>61.000000</td>
+      <td>0.636061</td>
+      <td>0.857183</td>
+    </tr>
+    <tr>
+      <td>ACN_Optimized_B1</td>
+      <td>200.0</td>
+      <td>0.981770</td>
+      <td>0.449638</td>
+      <td>0.205252</td>
+      <td>39.416667</td>
+      <td>0.633461</td>
+      <td>0.875481</td>
+    </tr>
+    <tr>
+      <td>ACN_LMS_Outage_Fallback</td>
+      <td>200.0</td>
+      <td>0.789412</td>
+      <td>0.576489</td>
+      <td>0.311900</td>
+      <td>85.833333</td>
+      <td>0.635457</td>
+      <td>0.755763</td>
+    </tr>
+    <tr>
+      <td>ACN_Exam_Peak_500</td>
+      <td>500.0</td>
+      <td>0.982892</td>
+      <td>0.428929</td>
+      <td>1.256529</td>
+      <td>114.583333</td>
+      <td>0.627257</td>
+      <td>0.861403</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Behavior Summary</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario</th>
+      <th>week</th>
+      <th>adoption_rate</th>
+      <th>density</th>
+      <th>isolated_students</th>
+      <th>degree_gini</th>
+      <th>giant_component_share</th>
+      <th>mean_satisfaction</th>
+      <th>group_balance_index</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AS_IS_Self_Selection</td>
+      <td>12</td>
+      <td>0.000</td>
+      <td>0.011809</td>
+      <td>29</td>
+      <td>0.400766</td>
+      <td>0.820</td>
+      <td>0.445442</td>
+      <td>0.973379</td>
+    </tr>
+    <tr>
+      <td>ACN_No_B1</td>
+      <td>12</td>
+      <td>0.505</td>
+      <td>0.026030</td>
+      <td>7</td>
+      <td>0.428098</td>
+      <td>0.965</td>
+      <td>0.628457</td>
+      <td>0.618111</td>
+    </tr>
+    <tr>
+      <td>ACN_With_B1</td>
+      <td>12</td>
+      <td>0.870</td>
+      <td>0.116080</td>
+      <td>5</td>
+      <td>0.192937</td>
+      <td>0.975</td>
+      <td>0.786466</td>
+      <td>0.655926</td>
+    </tr>
+    <tr>
+      <td>ACN_Low_Adoption_20</td>
+      <td>12</td>
+      <td>0.370</td>
+      <td>0.025779</td>
+      <td>11</td>
+      <td>0.473236</td>
+      <td>0.935</td>
+      <td>0.621850</td>
+      <td>0.634828</td>
+    </tr>
+  </tbody>
+</table>
+</main>
+</body>
+</html>

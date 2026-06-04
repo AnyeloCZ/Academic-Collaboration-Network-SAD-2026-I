@@ -1,0 +1,14 @@
+parameter,value,source,simulation_use
+survey_n,25,Workshop 1 survey,Calibration sample size
+whatsapp_only_rate,0.88,Workshop 1 Q5,AS-IS communication dependency
+communication_barrier_rate,0.36,Workshop 1 Q4,AS-IS failure probability
+lack_of_interest_rate,0.32,Workshop 1 Q4,Invitation and adoption uncertainty
+platform_interest_yes_or_maybe,0.96,Workshop 1 Q6,Adoption upper bound
+adoption_likelihood_mean,3.88,Workshop 1 Q7,Initial adoption propensity
+adoption_likelihood_std,1.01,Workshop 1 Q7,Adoption uncertainty
+as_is_group_formation_days_min,2.0,Workshop 1 observation,AS-IS duration lower bound
+as_is_group_formation_days_mode,3.5,Workshop 1 observation,AS-IS duration mode
+as_is_group_formation_days_max,5.0,Workshop 1 observation,AS-IS duration upper bound
+target_matching_latency_seconds,3.0,Workshop 2 NFR,Design validation threshold
+target_concurrent_users,500,Workshop 2 and 3 NFR,Stress scenario size
+target_adoption_rate,0.80,Workshop 2 target,Adoption benchmark

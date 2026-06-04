@@ -1,0 +1,110 @@
+{
+  "random_seed": 202604,
+  "cohort_size": 200,
+  "group_size": 5,
+  "trials": 120,
+  "semester_weeks": 12,
+  "process_scenarios": [
+    {
+      "name": "AS_IS_WhatsApp",
+      "cohort_size": 200,
+      "strategy": "homophily",
+      "platform": false,
+      "adoption_rate": 0.0,
+      "success_base": 0.58,
+      "communication": 0.42,
+      "schedule": 0.25,
+      "stress_multiplier": 1.0
+    },
+    {
+      "name": "ACN_Baseline",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform": true,
+      "adoption_rate": 0.80,
+      "success_base": 0.84,
+      "communication": 0.78,
+      "schedule": 0.72,
+      "stress_multiplier": 1.0
+    },
+    {
+      "name": "ACN_Optimized_B1",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform": true,
+      "adoption_rate": 0.90,
+      "success_base": 0.90,
+      "communication": 0.86,
+      "schedule": 0.82,
+      "stress_multiplier": 0.78
+    },
+    {
+      "name": "ACN_LMS_Outage_Fallback",
+      "cohort_size": 200,
+      "strategy": "balanced",
+      "platform": true,
+      "adoption_rate": 0.80,
+      "success_base": 0.76,
+      "communication": 0.70,
+      "schedule": 0.48,
+      "stress_multiplier": 1.18
+    },
+    {
+      "name": "ACN_Exam_Peak_500",
+      "cohort_size": 500,
+      "strategy": "balanced",
+      "platform": true,
+      "adoption_rate": 0.86,
+      "success_base": 0.86,
+      "communication": 0.80,
+      "schedule": 0.76,
+      "stress_multiplier": 1.24
+    }
+  ],
+  "behavior_scenarios": [
+    {
+      "name": "AS_IS_Self_Selection",
+      "strategy": "homophily",
+      "initial_adoption": 0.0,
+      "weekly_participation": 0.48,
+      "edge_retention": 0.42,
+      "isolation_priority": false,
+      "platform": false,
+      "max_adoption": 0.0
+    },
+    {
+      "name": "ACN_No_B1",
+      "strategy": "balanced",
+      "initial_adoption": 0.35,
+      "weekly_participation": 0.45,
+      "edge_retention": 0.40,
+      "isolation_priority": false,
+      "platform": true,
+      "max_adoption": 0.55
+    },
+    {
+      "name": "ACN_With_B1",
+      "strategy": "balanced",
+      "initial_adoption": 0.78,
+      "weekly_participation": 0.86,
+      "edge_retention": 0.78,
+      "isolation_priority": true,
+      "platform": true,
+      "max_adoption": 0.96
+    },
+    {
+      "name": "ACN_Low_Adoption_20",
+      "strategy": "balanced",
+      "initial_adoption": 0.20,
+      "weekly_participation": 0.48,
+      "edge_retention": 0.54,
+      "isolation_priority": true,
+      "platform": true,
+      "max_adoption": 0.38
+    }
+  ],
+  "sensitivity": {
+    "adoption_rates": [0.2, 0.4, 0.6, 0.8, 0.9],
+    "isolation_thresholds": [0, 1, 2, 3]
+  }
+}
